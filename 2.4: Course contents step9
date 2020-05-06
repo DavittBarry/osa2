@@ -1,26 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Header = ({course}) =>  {
-  return (<div><h1>{course.name}</h1></div>) 
-}
-
-const ContentName = ({course}) =>  {
+const Course = ({course}) =>  {
   const partname = course.map(part => <li key={part.id}>{part.name} {part.exercises}</li>) 
   console.log(partname)
  return (<div>{partname}</div>)
+}
+
+const Header = ({course}) =>  {
+  return (<div><h1>{course.name}</h1></div>) 
 }
 
 const TotalExercises = ({course}) =>  {
   const exlist = course.map(part => part.exercises) 
   console.log(exlist)
   const extotal = exlist.reduce((a, b) => a + b, 0)
+
   /*
   const extotal = exlist.reduce(function(sum, order) {
     console.log("extotal", sum, order)
     return sum + order.amount
   }, 0)
   */
+
   return (<div><h2>A total of {extotal} exercises.</h2></div>
   )
 }
@@ -77,10 +79,10 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <ContentName course={course.parts} />
+      <Course course={course.parts} />
       <TotalExercises course={course.parts} />
       <Header course={extracourses} />
-      <ContentName course={extracourses.parts} />
+      <Course course={extracourses.parts} />
       <TotalExercises course={extracourses.parts} />
     </div>
   )
