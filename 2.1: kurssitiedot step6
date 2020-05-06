@@ -1,15 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Header = ({course}) =>  {
-  return (
-    <div>
-    <h1>{course.name}</h1>
-    </div>
-  ) 
-}
-
-const ContentName = ({course}, ) =>  {
+const Course = ({course}) =>  {
   const partname = course.map(part => <li key={part.id}>{part.name} {part.exercises}</li>) 
   console.log(partname)
  return (
@@ -19,7 +11,13 @@ const ContentName = ({course}, ) =>  {
  )
 }
 
-console.log()
+const Header = ({course}) =>  {
+  return (
+    <div>
+    <h1>{course.name}</h1>
+    </div>
+  ) 
+}
 
 const App = () => {
   const course = {
@@ -47,7 +45,7 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <ContentName course={course.parts} />
+      <Course course={course.parts} />
     </div>
   )
 }
